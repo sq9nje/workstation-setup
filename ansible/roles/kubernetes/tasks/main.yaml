@@ -1,0 +1,35 @@
+---
+
+- name: add https apt transport
+  apt:
+    name: apt-transport-https
+    state: present
+
+- block:
+  - name: add Google Cloud repo key
+    apt_key:
+      url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+      state: present
+  - name: add kubernetes repo
+    apt_repository:
+            repo: deb http://apt.kubernetes.io/ kubernetes-xenial main
+            filename: kubernetes
+            state: present
+  - name: install kubectl
+    apt:
+      name: kubectl
+      state: present
+      update_cache: true
+
+- block:
+  - name: download helm binary archive
+    unarchive:
+      src: https://get.helm.sh/helm-v2.16.1-linux-amd64.tar.gz
+      dest: /tmp
+      creates: /usr/local/bin/helm
+      remote_src: yes
+
+  - name: move helm binary
+    command: >
+      cp /tmp/linux-amd64/helm /usr/local/bin/helm
+      creates=/usr/local/bin/helm

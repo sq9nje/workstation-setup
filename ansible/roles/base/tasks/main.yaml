@@ -1,0 +1,87 @@
+---
+
+- name: disable system crash reports
+  lineinfile:
+    dest: /etc/default/apport
+    regexp: "^enabled=(0|1)"
+    line: enabled=0
+    state: present
+
+- name: tune system swappiness
+  sysctl:
+    name: vm.swappiness
+    value: 1
+    state: present
+
+- name: perform a dist upgrade
+  apt:
+    update_cache: yes
+    upgrade: dist
+
+- name: install archiving tools
+  apt:
+    name: "{{ base_archiving_tools }}"
+    state: present
+
+- name: install productivity tools
+  apt:
+    name: "{{ base_productivity_tools }}"
+    state: present
+
+- name: install system tools
+  apt:
+    name: "{{ base_system_tools }}"
+    state: present
+
+- name: install system tools for laptop
+  apt:
+    name: "{{ base_system_tools_laptop }}"
+    state: present
+
+- name: install developer tools
+  apt:
+    name: "{{ base_developer_tools }}"
+    state: present
+
+- name: install CAD tools
+  apt:
+    name: "{{ base_cad_tools }}"
+    state: present
+
+- name: install HAM radio tools
+  apt:
+    name: "{{ base_hamradio }}"
+    state: present
+
+- name: install download tools
+  apt:
+    name: "{{ base_download_tools }}"
+    state: present
+
+- name: install media packages
+  apt:
+    name: "{{ base_media_tools }}"
+    state: present
+
+- name: install google chrome
+  apt:
+    deb: "{{ base_google_chrome_url }}"
+
+- name: install gnome extension plugin
+  apt:
+   name: chrome-gnome-shell
+   state: present
+
+- block:
+    - name: install virtualization tools
+      apt:
+        name: "{{ base_virtualization_tools }}"
+        state: present
+
+    # add user to docker group to run docker commands without sudo
+    - name: add user to docker group
+      user:
+        name: "{{ local_username }}"
+        append: yes
+        groups:
+          - docker

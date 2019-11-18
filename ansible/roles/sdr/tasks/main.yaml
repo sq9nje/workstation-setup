@@ -1,0 +1,33 @@
+---
+
+- name: add repositories for sdr
+  apt_repository:
+    repo: "{{ item }}"
+    state: present
+  loop:
+  - ppa:bladerf/bladerf
+  - ppa:ettusresearch/uhd
+  - ppa:gqrx/gqrx-sdr
+  - ppa:myriadrf/drivers
+  - ppa:myriadrf/gnuradio
+  - ppa:pothosware/framework
+  - ppa:pothosware/support
+
+- name: install gqrx
+  apt:
+    name: gqrx-sdr
+    state: present
+    update_cache: true
+
+- name: install liblimesuite
+  apt:
+    name: liblimesuite18.10-1
+    state: present
+    update_cache: true
+
+- name: install SoapySDR
+  apt:
+    name:
+    - soapysdr-module-all=0.6.1-2
+    - soapysdr-tools=0.6.1-2
+    state: present

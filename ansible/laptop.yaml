@@ -1,0 +1,11 @@
+---
+
+- hosts: localhost
+  roles:
+    - base
+    - kubernetes 
+    - vscode
+    - azure
+    - arduino
+    - zsh
+

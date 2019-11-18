@@ -1,0 +1,14 @@
+---
+
+- name: download arduino binary archive
+  unarchive:
+    src: https://downloads.arduino.cc/arduino-1.8.10-linux64.tar.xz
+    dest: /tmp
+    remote_src: yes
+- name: install arduino 1.8.10
+  command: /tmp/arduino-1.8.10/install.sh
+- name: cleanup
+  file:
+    path: /tmp/arduino-1.8.10/
+    state: absent
+
