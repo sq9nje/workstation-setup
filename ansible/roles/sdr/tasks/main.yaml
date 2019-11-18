@@ -68,3 +68,28 @@
   pip:
     name: urh
     executable: pip3
+
+- name: install qspectrumanalyzer pre-reqs
+  apt:
+    name:
+      - python3-scipy
+      - python3-soapysdr
+    state: present
+    update_cache: true
+
+- name: install qspectrumanalyzer
+  pip:
+    name: 
+      - pyfftw
+      - qspectrumanalyzer
+      - simplesoapy
+      - simplespectral
+      - soapy_power
+    executable: pip3
+
+- name: install pothosware
+  apt:
+    name: pothos-all
+    state: present
+    update_cache: true
+    
