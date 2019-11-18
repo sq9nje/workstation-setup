@@ -75,6 +75,15 @@ base_developer_tools:
   - virtualenvwrapper
   - xclip
   - gopass
+  - automake 
+  - autotools-dev 
+  - cmake-data 
+  - libjsoncpp1 
+  - libltdl-dev 
+  - librhash0 
+  - libusb-1.0-doc 
+  - libuv1 
+  - m4
 
 base_virtualization_tools:
   - vagrant
