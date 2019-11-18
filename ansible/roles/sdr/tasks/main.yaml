@@ -27,6 +27,7 @@
   apt:
     name: 
       - soapysdr-tools=0.6.1-2
+      - libsoapysdr-dev=0.6.1-2
       #- soapysdr0.6-module-lms7 
     state: present
     update_cache: true
