@@ -13,21 +13,39 @@
   - ppa:pothosware/framework
   - ppa:pothosware/support
 
+- name: install limesuite
+  apt:
+    name: 
+     - liblimesuite18.10-1
+     - limesuite
+     - limesuite-udev
+     - limesuite-images
+    state: present
+    update_cache: true
+
+- name: install soapysdr
+  apt:
+    name: 
+      - soapysdr-tools=0.6.1-2
+      #- soapysdr0.6-module-lms7 
+    state: present
+    update_cache: true
+
+- name: install gnuradio
+  apt:
+    name: 
+      - gnuradio
+      - gr-osmosdr
+      - gr-fosphor
+      - gr-limesdr
+      - gr-rds
+      - gr-air-modes
+      - gr-gsm
+    state: present
+    update_cache: true
+
 - name: install gqrx
   apt:
     name: gqrx-sdr
     state: present
     update_cache: true
-
-- name: install liblimesuite
-  apt:
-    name: liblimesuite18.10-1
-    state: present
-    update_cache: true
-
-- name: install SoapySDR
-  apt:
-    name:
-    - soapysdr-module-all=0.6.1-2
-    - soapysdr-tools=0.6.1-2
-    state: present
