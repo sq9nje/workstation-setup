@@ -84,6 +84,7 @@ base_developer_tools:
   - libusb-1.0-doc 
   - libuv1 
   - m4
+  - gnuplot
 
 base_virtualization_tools:
   - vagrant
