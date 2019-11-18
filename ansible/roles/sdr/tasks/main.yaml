@@ -13,7 +13,7 @@
   - ppa:pothosware/framework
   - ppa:pothosware/support
 
-- name: install limesuite
+- name: install liblimesuite
   apt:
     name: 
      - liblimesuite18.10-1
@@ -30,6 +30,7 @@
       #- soapysdr0.6-module-lms7 
     state: present
     update_cache: true
+    only_upgrade: true
 
 - name: install gnuradio
   apt:
@@ -49,3 +50,20 @@
     name: gqrx-sdr
     state: present
     update_cache: true
+
+- name: install urh pre-reqs
+  apt:
+    name:
+      - python3-numpy 
+      - python3-psutil 
+      - python3-zmq 
+      - python3-pyqt5 
+      - g++ 
+      - libpython3-dev 
+      - python3-pip 
+      - cython3
+
+- name: install urh
+  pip:
+    name: urh
+    executable: pip3
