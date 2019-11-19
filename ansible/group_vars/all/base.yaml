@@ -14,6 +14,7 @@ base_productivity_tools:
   - libreoffice
   - doublecmd-gtk
   - doublecmd-plugins
+  - nautilus-dropbox
 
 base_system_tools:
   - gnome-tweak-tool

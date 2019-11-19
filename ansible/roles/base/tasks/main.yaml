@@ -18,6 +18,17 @@
     update_cache: yes
     upgrade: dist
 
+- name: add gopass repo key
+  apt_key:
+    url: https://api.bintray.com/orgs/gopasspw/keys/gpg/public.key
+    state: present
+
+- name: add gopass repo
+  apt_repository:
+    repo: deb https://dl.bintray.com/gopasspw/gopass trusty main
+    filename: gopass
+    state: present
+
 - name: install archiving tools
   apt:
     name: "{{ base_archiving_tools }}"
