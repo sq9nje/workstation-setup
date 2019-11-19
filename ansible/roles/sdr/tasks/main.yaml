@@ -92,4 +92,9 @@
     name: pothos-all
     state: present
     update_cache: true
+
+- name: install sdrangel
+  apt:
+    deb: https://github.com/f4exb/sdrangel/releases/download/v4.12.0/sdrangel_4.12.0-1_amd64.deb
+    state: present
     
